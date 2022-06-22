@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "QQoSyzfA8tzjdMOBMT8qKGGb3WbLpbrhSOLizEHsVT0=",
+  "Source": "APICustomer",
+  "BasePath": "_content/APICustomer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
