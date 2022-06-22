@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using APICustomer.Data;
 using APICustomer.Models;
+using System.Net;
 
 namespace APICustomer.Controllers
 {
@@ -37,18 +38,27 @@ namespace APICustomer.Controllers
             var customer = _db.Customers.Find(id);
             if (customer == null)
             {
-                return Results.NotFound();
+                return Results.NotFound("Customer avec id: " + id + " introuvable.");
+
+                //affichera
+                //{
+                //    "value": "Customer avec id: 10 introuvable.",
+                //    "statusCode": 404,
+                //    "contentType": null
+                //}
+
             }
             return Results.Ok(customer);
         }
 
         // POST: api/Customer
         [HttpPost]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
         public IResult CreateCustomer(Customer customer)
         {
             if (customer == null)
             {
-                return Results.BadRequest(customer);
+                return Results.BadRequest(customer);    //renvoie le message d'erreur contenu dans la classe
             }
             else
             {
