@@ -58,7 +58,7 @@ namespace APICustomer.Controllers
         {
             if (customer == null)
             {
-                return Results.BadRequest(customer);    //renvoie le message d'erreur contenu dans la classe
+                return Results.BadRequest("erreur dans la création du customer");    //renvoie le message d'erreur contenu dans la classe
             }
             else
             {
@@ -81,12 +81,13 @@ namespace APICustomer.Controllers
                 var customer = _db.Customers.Find(id);
                 if (customer == null)
                 {
-                    return Results.NotFound(customer);
+                    return Results.NotFound("erreur dans la modif du customer");
                 }
                 else
                 {
                     customer.PhoneNumber = customerPUT.PhoneNumber;
                     customer.Name = customerPUT.Name;
+                    customer.customerCategory = customerPUT.customerCategory;
 
                     _db.Customers.Update(customer);
                     _db.SaveChanges();

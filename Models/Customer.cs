@@ -3,6 +3,13 @@
 namespace APICustomer.Models
     
 {
+    public enum CustomerCategory
+    {
+        nouveau,
+        rare,
+        fréquent,
+        ancien
+    }
     public class Customer
     {
         [Key]
@@ -18,6 +25,10 @@ namespace APICustomer.Models
         [Display(Name = "Numéro de téléphone")]
         [RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Le format du numéro de téléphone est invalide.")]
         public string PhoneNumber { get; set; } = null!;
+
+        [Required(ErrorMessage = "Le catégorie du client ne peut être vide.")]
+        [Display(Name = "Catégorie client")]
+        public CustomerCategory? customerCategory { get; set; }
 
     }
 }
